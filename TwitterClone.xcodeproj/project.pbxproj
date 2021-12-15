@@ -20,6 +20,7 @@
 		E738594027628A1600394D5E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E738593F27628A1600394D5E /* Extensions.swift */; };
 		E73859432763950700394D5E /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73859422763950700394D5E /* LoginController.swift */; };
 		E7385945276395DC00394D5E /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7385944276395DC00394D5E /* RegistrationController.swift */; };
+		E7D6DAB4276906BF00576816 /* Utilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D6DAB3276906BF00576816 /* Utilites.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		E738593F27628A1600394D5E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E73859422763950700394D5E /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E7385944276395DC00394D5E /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		E7D6DAB3276906BF00576816 /* Utilites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilites.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				E738593F27628A1600394D5E /* Extensions.swift */,
+				E7D6DAB3276906BF00576816 /* Utilites.swift */,
 			);
 			path = Utilits;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				E738593E27620B2800394D5E /* ConversationsController.swift in Sources */,
 				E73859152762056100394D5E /* AppDelegate.swift in Sources */,
 				E738594027628A1600394D5E /* Extensions.swift in Sources */,
+				E7D6DAB4276906BF00576816 /* Utilites.swift in Sources */,
 				E73859432763950700394D5E /* LoginController.swift in Sources */,
 				E738593A27620AC400394D5E /* ExploreController.swift in Sources */,
 				E73859172762056100394D5E /* SceneDelegate.swift in Sources */,
