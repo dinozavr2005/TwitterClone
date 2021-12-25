@@ -41,6 +41,7 @@
 		E7AF1F042774842100556652 /* ProfileFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF1F032774842000556652 /* ProfileFilterView.swift */; };
 		E7AF1F0627748C2E00556652 /* ProfileFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF1F0527748C2E00556652 /* ProfileFilterCell.swift */; };
 		E7AF1F082774BD0200556652 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF1F072774BD0200556652 /* ProfileHeaderViewModel.swift */; };
+		E7AF1F0A2777261A00556652 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7AF1F092777261A00556652 /* UserCell.swift */; };
 		E7D6DAB4276906BF00576816 /* Utilites.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D6DAB3276906BF00576816 /* Utilites.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		E7AF1F032774842000556652 /* ProfileFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFilterView.swift; sourceTree = "<group>"; };
 		E7AF1F0527748C2E00556652 /* ProfileFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFilterCell.swift; sourceTree = "<group>"; };
 		E7AF1F072774BD0200556652 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
+		E7AF1F092777261A00556652 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		E7D6DAB3276906BF00576816 /* Utilites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilites.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +159,7 @@
 				E7AF1F012773365200556652 /* ProfileHeader.swift */,
 				E7AF1F032774842000556652 /* ProfileFilterView.swift */,
 				E7AF1F0527748C2E00556652 /* ProfileFilterCell.swift */,
+				E7AF1F092777261A00556652 /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				E7AF1EF62770D23A00556652 /* CaptionTextView.swift in Sources */,
 				E7AF1F0627748C2E00556652 /* ProfileFilterCell.swift in Sources */,
 				E738593E27620B2800394D5E /* ConversationsController.swift in Sources */,
+				E7AF1F0A2777261A00556652 /* UserCell.swift in Sources */,
 				E73859152762056100394D5E /* AppDelegate.swift in Sources */,
 				E738594027628A1600394D5E /* Extensions.swift in Sources */,
 				E7D6DAB4276906BF00576816 /* Utilites.swift in Sources */,
