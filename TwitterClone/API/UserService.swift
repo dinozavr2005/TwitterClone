@@ -7,6 +7,7 @@
 //
 
 import Firebase
+import UIKit
 
 typealias DatabaseCompletion = ((Error?, DatabaseReference) -> Void)
 
@@ -68,6 +69,34 @@ struct UserService {
                 completion(stats)
             }
         }
+    }
+    
+    // MARK: - Changing Profile
+
+    func updateProfileImage(image: UIImage, completion: @escaping(URL?) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.3) else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let filename = NSUUID().uuidString
+        let ref = STORAGE_PROFILE_IMAGES.child(filename)
+        
+        ref.putData(imageData, metadata: nil) { (meta, error) in
+            ref.downloadURL { (url, error) in
+                guard let profileImageUrl = url?.absoluteString else { return }
+                let values = ["profileImageUrl": profileImageUrl]
+                
+                REF_USERS.child(uid).updateChildValues(values) { (err, ref) in
+                    completion(url)
+                }
+            }
+        }
+    }
+    
+    func saveUserData(user: User, completion: @escaping(DatabaseCompletion)) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let values = ["fullname": user.fullname, "username": user.username, "bio": user.bio ?? ""]
+        
+        REF_USERS.child(uid).updateChildValues(values, withCompletionBlock: completion)
     }
 }
 

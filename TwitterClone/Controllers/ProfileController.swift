@@ -173,6 +173,13 @@ extension ProfileController: ProfileHeaderDelegate {
     func handleEditProfileFollow(_ header: ProfileHeader) {
 
         if user.isCurrentUser {
+            let controller = EditProfileController(user: user)
+            //changing profile
+            controller.delegate = self
+            let nav = UINavigationController(rootViewController: controller)
+            // MARK: fullscreen Profile View?
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: true, completion: nil)
             return
         }
         
@@ -194,5 +201,16 @@ extension ProfileController: ProfileHeaderDelegate {
     
     func handleDismissal() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - EditProfileDelegate
+//change user profile
+
+extension ProfileController: EditProfileControllerDelegate {
+    func controller(_ controller: EditProfileController, wantsToUpdate user: User) {
+        controller.dismiss(animated: true, completion: nil)
+        self.user = user
+        self.collectionView.reloadData()
     }
 }

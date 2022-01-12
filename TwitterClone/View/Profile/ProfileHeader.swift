@@ -85,7 +85,7 @@ class ProfileHeader: UICollectionReusableView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 3
-        label.text = "Всем привет это описание будущего пользователя"
+//        label.text = "Всем привет это описание будущего пользователя"
         return label
     }()
     
@@ -184,6 +184,8 @@ class ProfileHeader: UICollectionReusableView {
         
         followingLabel.attributedText = viewModel.followingString
         followersLabel.attributedText = viewModel.followersString
+        
+        bioLabel.text = user.bio
         
         fullnameLabel.text = user.fullname
         usernameLabel.text = viewModel.usernameText
