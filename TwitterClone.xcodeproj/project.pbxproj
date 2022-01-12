@@ -11,6 +11,7 @@
 		E708FCDB278CBD3B00471775 /* EditProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E708FCDA278CBD3B00471775 /* EditProfileHeader.swift */; };
 		E708FD03278DBE4C00471775 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E708FD02278DBE4C00471775 /* EditProfileViewModel.swift */; };
 		E708FD05278DBFE000471775 /* EditProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E708FD04278DBFE000471775 /* EditProfileCell.swift */; };
+		E708FD08278ED5BC00471775 /* ActiveLabel in Frameworks */ = {isa = PBXBuildFile; productRef = E708FD07278ED5BC00471775 /* ActiveLabel */; };
 		E737FE8D276D2E8C00284699 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E737FE8C276D2E8C00284699 /* FirebaseAuth */; };
 		E737FE8F276D2E8C00284699 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = E737FE8E276D2E8C00284699 /* FirebaseDatabase */; };
 		E737FE91276D2E8C00284699 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E737FE90276D2E8C00284699 /* FirebaseFirestore */; };
@@ -115,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E737FE8F276D2E8C00284699 /* FirebaseDatabase in Frameworks */,
+				E708FD08278ED5BC00471775 /* ActiveLabel in Frameworks */,
 				E737FE93276D2E8C00284699 /* FirebaseStorage in Frameworks */,
 				E737FE8D276D2E8C00284699 /* FirebaseAuth in Frameworks */,
 				E737FE91276D2E8C00284699 /* FirebaseFirestore in Frameworks */,
@@ -280,6 +282,7 @@
 				E737FE90276D2E8C00284699 /* FirebaseFirestore */,
 				E737FE92276D2E8C00284699 /* FirebaseStorage */,
 				E7AF1EF1276F8A7600556652 /* SDWebImage */,
+				E708FD07278ED5BC00471775 /* ActiveLabel */,
 			);
 			productName = TwitterClone;
 			productReference = E73859112762056100394D5E /* TwitterClone.app */;
@@ -313,6 +316,7 @@
 			packageReferences = (
 				E737FE8B276D2E8C00284699 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				E7AF1EF0276F8A7600556652 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				E708FD06278ED5BC00471775 /* XCRemoteSwiftPackageReference "ActiveLabel" */,
 			);
 			productRefGroup = E73859122762056100394D5E /* Products */;
 			projectDirPath = "";
@@ -606,6 +610,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E708FD06278ED5BC00471775 /* XCRemoteSwiftPackageReference "ActiveLabel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/optonaut/ActiveLabel.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		E737FE8B276D2E8C00284699 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -625,6 +637,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E708FD07278ED5BC00471775 /* ActiveLabel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E708FD06278ED5BC00471775 /* XCRemoteSwiftPackageReference "ActiveLabel" */;
+			productName = ActiveLabel;
+		};
 		E737FE8C276D2E8C00284699 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E737FE8B276D2E8C00284699 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
