@@ -9,9 +9,16 @@
 import UIKit
 import Firebase
 
+enum ActionButtonCofiguration {
+    case tweet
+    case message
+}
+
 class MainTabController: UITabBarController {
     
     // MARK: - Properties
+    
+    private var buttonConfig: ActionButtonCofiguration = .tweet
     
     var user: User? {
         didSet{
@@ -38,10 +45,8 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //logUserOut()
         view.backgroundColor = .twitterBlue
         authenticateUserAndConfigureUI()
-
     }
     
     // MARK: - API
@@ -66,21 +71,21 @@ class MainTabController: UITabBarController {
             fetchUser()
         }
     }
-
-    func logUserOut() {
-        do {
-            try Auth.auth().signOut()
-            print("DEBUG: Did log user out..")
-        } catch let error {
-            print("DEBUG: Failed to sign out with error \(error.localizedDescription)")
-        }
-    }
     
     // MARK: - Selectors
     
     @objc func actionButtonTapped() {
-        guard let user = user else { return }
-        let controller = UploadTweetController(user: user, config: .tweet)
+        
+        let controller: UIViewController
+        
+        switch  buttonConfig {
+        case .tweet:
+            guard let user = user else { return }
+            controller = UploadTweetController(user: user, config: .tweet)
+        case .message:
+            controller = SearchController(config: .messages)
+        }
+        
         let nav = UINavigationController(rootViewController: controller)
 //        nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
@@ -90,17 +95,9 @@ class MainTabController: UITabBarController {
     // MARK: - Helpers
     
     func configureUI() {
+        self.delegate = self
         view.addSubview(actionButton)
         actionButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingBottom: 64, paddingRight: 16, width: 56, height: 56)
-        
-        //        Build AutoLayout Programmatically:
-        
-        //        actionButton.translatesAutoresizingMaskIntoConstraints = false
-        //        actionButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
-        //        actionButton.widthAnchor.constraint(equalToConstant: 56).isActive = true
-        //        actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -64).isActive = true
-        //        actionButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant:  -16).isActive = true
-        
         actionButton.layer.cornerRadius = 56 / 2
     }
     
@@ -110,7 +107,7 @@ class MainTabController: UITabBarController {
         let nav1 = templateNavigationController(image: UIImage(named: "home_unselected"), rootViewController: feed)
         
         
-        let explore = ExploreController()
+        let explore = SearchController(config: .userSearch)
         let nav2 = templateNavigationController(image: UIImage(named: "search_unselected"), rootViewController: explore)
         
         let notifications = NotificationsController()
@@ -128,5 +125,17 @@ class MainTabController: UITabBarController {
         nav.tabBarItem.image = image
         nav.navigationBar.barTintColor = .white
         return nav
+    }
+}
+
+// MARK: - UITabBarControllerDelegate
+// change buttonimage for message
+
+extension MainTabController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let index =  viewControllers?.firstIndex(of: viewController)
+        let image = index == 3 ? #imageLiteral(resourceName: "mail") : #imageLiteral(resourceName: "new_tweet")
+        actionButton.setImage(image, for: .normal)
+        buttonConfig = index == 3 ? .message : .tweet
     }
 }

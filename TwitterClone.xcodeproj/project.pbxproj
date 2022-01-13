@@ -12,6 +12,7 @@
 		E708FD03278DBE4C00471775 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E708FD02278DBE4C00471775 /* EditProfileViewModel.swift */; };
 		E708FD05278DBFE000471775 /* EditProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E708FD04278DBFE000471775 /* EditProfileCell.swift */; };
 		E708FD08278ED5BC00471775 /* ActiveLabel in Frameworks */ = {isa = PBXBuildFile; productRef = E708FD07278ED5BC00471775 /* ActiveLabel */; };
+		E708FD0A278F197600471775 /* EditProfileFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E708FD09278F197600471775 /* EditProfileFooter.swift */; };
 		E737FE8D276D2E8C00284699 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E737FE8C276D2E8C00284699 /* FirebaseAuth */; };
 		E737FE8F276D2E8C00284699 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = E737FE8E276D2E8C00284699 /* FirebaseDatabase */; };
 		E737FE91276D2E8C00284699 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E737FE90276D2E8C00284699 /* FirebaseFirestore */; };
@@ -65,6 +66,7 @@
 		E708FCDA278CBD3B00471775 /* EditProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileHeader.swift; sourceTree = "<group>"; };
 		E708FD02278DBE4C00471775 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		E708FD04278DBFE000471775 /* EditProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileCell.swift; sourceTree = "<group>"; };
+		E708FD09278F197600471775 /* EditProfileFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileFooter.swift; sourceTree = "<group>"; };
 		E73859112762056100394D5E /* TwitterClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E73859142762056100394D5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E73859162762056100394D5E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				E7AF1F0527748C2E00556652 /* ProfileFilterCell.swift */,
 				E708FCDA278CBD3B00471775 /* EditProfileHeader.swift */,
 				E708FD04278DBFE000471775 /* EditProfileCell.swift */,
+				E708FD09278F197600471775 /* EditProfileFooter.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				E7AF1F16277B718300556652 /* ActionSheetViewModel.swift in Sources */,
 				E7AF1F1C277DD33100556652 /* NotificationCell.swift in Sources */,
 				E708FD03278DBE4C00471775 /* EditProfileViewModel.swift in Sources */,
+				E708FD0A278F197600471775 /* EditProfileFooter.swift in Sources */,
 				E7385945276395DC00394D5E /* RegistrationController.swift in Sources */,
 				E738593827620A5700394D5E /* FeedController.swift in Sources */,
 				E7AF1F042774842100556652 /* ProfileFilterView.swift in Sources */,

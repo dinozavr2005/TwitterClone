@@ -49,7 +49,7 @@ class TweetHeader: UICollectionReusableView {
     private let usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .systemGray
+        label.textColor = .lightGray
         label.text = "spiderman"
         return label
     }()
@@ -68,7 +68,7 @@ class TweetHeader: UICollectionReusableView {
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .left
-        label.text = "6:33 PM - 1/1/2021"
+        label.text = "6:33 PM - 1/28/2020"
         return label
     }()
     
@@ -88,8 +88,7 @@ class TweetHeader: UICollectionReusableView {
         return label
     }()
     
-    private let retweetsLabel = UILabel()
-    
+    private lazy var retweetsLabel = UILabel()
     private lazy var likesLabel = UILabel()
     
     private lazy var statsView: UIView = {
@@ -98,8 +97,8 @@ class TweetHeader: UICollectionReusableView {
         let divider1 = UIView()
         divider1.backgroundColor = .systemGroupedBackground
         view.addSubview(divider1)
-        divider1.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor,
-                        paddingLeft: 8, height: 1.0)
+        divider1.anchor(top: view.topAnchor, left: view.leftAnchor,
+                        right: view.rightAnchor, paddingLeft: 8, height: 1.0)
         
         let stack = UIStackView(arrangedSubviews: [retweetsLabel, likesLabel])
         stack.axis = .horizontal
@@ -112,9 +111,9 @@ class TweetHeader: UICollectionReusableView {
         let divider2 = UIView()
         divider2.backgroundColor = .systemGroupedBackground
         view.addSubview(divider2)
-        divider2.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor,
-                        paddingLeft: 8, height: 1.0)
-
+        divider2.anchor(left: view.leftAnchor, bottom: view.bottomAnchor,
+                             right: view.rightAnchor, paddingLeft: 8, height: 1.0)
+        
         return view
     }()
     
@@ -193,12 +192,12 @@ class TweetHeader: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Selectors
+    // MARK - Selectors
     
     @objc func handleProfileImageTapped() {
-        print("DEBUG: Go to userprofile")
+        print("DEBUG: Go to user profile..")
     }
-
+    
     @objc func showActionSheet() {
         delegate?.showActionSheet()
     }
@@ -218,12 +217,12 @@ class TweetHeader: UICollectionReusableView {
     @objc func handleShareTapped() {
         
     }
-
-     //MARK: - Helpers
+    
+    // MARK: - Helpers
     
     func configure() {
         guard let tweet = tweet else { return }
-    
+        
         let viewModel = TweetViewModel(tweet: tweet)
         
         captionLabel.text = tweet.caption
@@ -232,6 +231,7 @@ class TweetHeader: UICollectionReusableView {
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
         dateLabel.text = viewModel.headerTimestamp
         retweetsLabel.attributedText = viewModel.retweetsAttributedString
+        
         likesLabel.attributedText = viewModel.likesAttributedString
         likeButton.setImage(viewModel.likeButtonImage, for: .normal)
         likeButton.tintColor = viewModel.likeButtonTintColor
@@ -248,12 +248,11 @@ class TweetHeader: UICollectionReusableView {
         return button
     }
     
-    // MARK: ActiveLabel
-
+//MARK: Active Label
+    
     func configureMentionHandler() {
         captionLabel.handleMentionTap { username in
             self.delegate?.handleFetchUser(withUsername: username)
         }
     }
-
 }

@@ -69,7 +69,7 @@ class UploadTweetController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        configureMantionHandler()
+        configureMentionHandler()
     }
     
     // MARK: - Selectors
@@ -80,21 +80,44 @@ class UploadTweetController: UIViewController {
     
     @objc func handleUploadTweet() {
         guard let caption = captionTextView.text else { return }
+    
         TweetService.shared.uploadTweet(caption: caption, type: config) { (error, ref) in
             if let error = error {
-                print("DEBUG: Failed to upload tweet with error\(error.localizedDescription)")
+                print("DEBUG: Failed to upload tweet with error \(error.localizedDescription)")
                 return
             }
-            
+
             if case .reply(let tweet) = self.config {
-                NotificationService.shared.uploadNotification(type: .reply, tweet: tweet)
+                NotificationService.shared.uploadNotification(toUser: tweet.user,
+                                                              type: .reply,
+                                                              tweetID: tweet.tweetID)
             }
             
+            self.uploadMentionNotification(forCaption: caption, tweetID: ref.key)
+
             self.dismiss(animated: true, completion: nil)
         }
     }
     
     // MARK: - API
+    
+    fileprivate func uploadMentionNotification(forCaption caption: String, tweetID: String?) {
+        guard caption.contains("@") else { return }
+        let words = caption.components(separatedBy: .whitespacesAndNewlines)
+        
+        words.forEach { word in
+            guard word.hasPrefix("@") else { return }
+            
+            var username = word.trimmingCharacters(in: .symbols)
+            username = username.trimmingCharacters(in: .punctuationCharacters)
+            
+            UserService.shared.fetchUser(withUsername: username) { mentionedUser in
+                NotificationService.shared.uploadNotification(toUser: mentionedUser,
+                                                              type: .mention,
+                                                              tweetID: tweetID)
+            }
+        }
+    }
     
     // MARK: - Helpers
     
@@ -102,18 +125,19 @@ class UploadTweetController: UIViewController {
         view.backgroundColor = .white
         configureNavigationBar()
         
-        let imageCaptionStack = UIStackView(arrangedSubviews:[profileImageView, captionTextView])
-        imageCaptionStack .axis = .horizontal
-        imageCaptionStack .spacing = 12
-        imageCaptionStack .alignment = .leading
+        let imageCaptionStack = UIStackView(arrangedSubviews: [profileImageView, captionTextView])
+        imageCaptionStack.axis = .horizontal
+        imageCaptionStack.spacing = 12
+        imageCaptionStack.alignment = .leading
         
         let stack = UIStackView(arrangedSubviews: [replyLabel, imageCaptionStack])
         stack.axis = .vertical
         stack.spacing = 12
         
         view.addSubview(stack)
-        stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor,
-                     paddingTop: 16, paddingLeft: 16, paddingRight: 16)
+        stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor,
+                     right: view.rightAnchor, paddingTop: 16, paddingLeft: 16,
+                     paddingRight: 16)
         
         profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
         
@@ -123,24 +147,21 @@ class UploadTweetController: UIViewController {
         replyLabel.isHidden = !viewModel.shouldShowReplyLabel
         guard let replyText = viewModel.replyText else { return }
         replyLabel.text = replyText
-                
     }
-
     
     func configureNavigationBar() {
-        navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.isTranslucent = false
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: actionButton)
     }
     
-    // MARK: Active Label
-
-    func configureMantionHandler() {
+    //MARK: Active Label
+    
+    func configureMentionHandler() {
         replyLabel.handleMentionTap { mention in
-            print("DEBUG mention \(mention)")
+            print("DEBUG: Mentioned user is \(mention)")
         }
     }
-    
 }
