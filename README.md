@@ -1,4 +1,5 @@
 # TwitterClone
+https://img.shields.io/cocoapods/p/ios?color=green
 Fully programmatic(No storyboars) Twitter Clone for iOS 13 using Swift 5, Firebase and MVVM Architecture
 
 <img width="416" alt="Снимок экрана 2022-01-13 в 13 47 16" src="https://user-images.githubusercontent.com/66667779/149316090-7d430b1c-fb0c-4721-9c08-d004d931f6be.png">
