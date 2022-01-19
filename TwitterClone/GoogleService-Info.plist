@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>823384448003-rpirg5913utihnakaiu3isj7lj431ofq.apps.googleusercontent.com</string>
+	<string>394786804540-pen9946u7h58qtleg1323lcbqu6qjla3.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.823384448003-rpirg5913utihnakaiu3isj7lj431ofq</string>
+	<string>com.googleusercontent.apps.394786804540-pen9946u7h58qtleg1323lcbqu6qjla3</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBtBcEQZKRCAMRT2ETmFc9VVzmGon3iH68</string>
+	<string>AIzaSyAJNYclVnwForZsSJahZH9AQvw0eKeM6XE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>823384448003</string>
+	<string>394786804540</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>cc.leadgroup.TwitterClone</string>
+	<string>com.stephandowless.TwitterTutorial</string>
 	<key>PROJECT_ID</key>
-	<string>twitterclone-8e1c7</string>
+	<string>twittertutorial-a2a3b</string>
 	<key>STORAGE_BUCKET</key>
-	<string>twitterclone-8e1c7.appspot.com</string>
+	<string>twittertutorial-a2a3b.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:823384448003:ios:9528bfac3ba1810b80c236</string>
+	<string>1:394786804540:ios:cbeb03539b9af37baf0439</string>
+	<key>DATABASE_URL</key>
+	<string>https://twittertutorial-a2a3b-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

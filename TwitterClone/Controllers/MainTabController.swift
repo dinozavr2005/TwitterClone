@@ -40,8 +40,6 @@ class MainTabController: UITabBarController {
     
     // MARK: - Lifecycle
 
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -75,24 +73,30 @@ class MainTabController: UITabBarController {
     // MARK: - Selectors
     
     @objc func actionButtonTapped() {
-        
-        let controller: UIViewController
-        
+
         switch  buttonConfig {
         case .tweet:
             guard let user = user else { return }
-            controller = UploadTweetController(user: user, config: .tweet)
+            let controller = UploadTweetController(user: user, config: .tweet)
+            presentController(controller)
         case .message:
-            controller = SearchController(config: .messages)
+            guard let nav = self.viewControllers?[3] as? UINavigationController else { return }
+            guard let convoVC = nav.viewControllers.first as? ConversationsController else { return }
+            let controller = SearchController(config: .messages)
+            controller.delegate = convoVC
+            presentController(controller)
         }
         
-        let nav = UINavigationController(rootViewController: controller)
-//        nav.modalPresentationStyle = .fullScreen
-        present(nav, animated: true, completion: nil)
     }
 
     
     // MARK: - Helpers
+    
+    func presentController(_ controller: UIViewController) {
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
+    }
     
     func configureUI() {
         self.delegate = self

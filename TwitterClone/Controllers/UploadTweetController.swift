@@ -122,6 +122,7 @@ class UploadTweetController: UIViewController {
     // MARK: - Helpers
     
     func configureUI() {
+        navigationController?.navigationBar.backgroundColor = .white
         view.backgroundColor = .white
         configureNavigationBar()
         
